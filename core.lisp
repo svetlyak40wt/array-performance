@@ -247,5 +247,6 @@
              (calc-on-double-float-adjustable-vector-aref double-float-adjustable-vector))
 
       (ascii-table:display generic-results)
+      (terpri)
       (ascii-table:display specialized-results)
       (values))))
