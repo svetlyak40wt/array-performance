@@ -25,14 +25,14 @@
 
 (defun calc-on-single-float-list (list)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for item single-float in list
-        summing (* item item) into summ single-float
+  (loop for item of-type single-float in list
+        summing (* item item) into summ of-type single-float
         finally (return (sqrt summ))))
 
 (defun calc-on-double-float-list (list)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for item double-float in list
-        summing (* item item) into summ double-float
+  (loop for item of-type double-float in list
+        summing (* item item) into summ of-type double-float
         finally (return (sqrt summ))))
 
 ;; Specialized vector functions
@@ -41,16 +41,16 @@
                 calc-on-single-float-vector))
 (defun calc-on-single-float-vector (vector)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for item single-float across vector
-        summing (* item item) into summ single-float
+  (loop for item of-type single-float across vector
+        summing (* item item) into summ of-type single-float
         finally (return (sqrt summ))))
 
 (declaim (ftype (function ((simple-array double-float)) double-float)
                 calc-on-double-float-vector))
 (defun calc-on-double-float-vector (vector)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for item double-float across vector
-        summing (* item item) into summ double-float
+  (loop for item of-type double-float across vector
+        summing (* item item) into summ of-type double-float
         finally (return (sqrt summ))))
 
 ;; Adjustable
@@ -59,16 +59,16 @@
                 calc-on-single-adjustable-float-vector))
 (defun calc-on-single-float-adjustable-vector (vector)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for item single-float across vector
-        summing (* item item) into summ single-float
+  (loop for item of-type single-float across vector
+        summing (* item item) into summ of-type single-float
         finally (return (sqrt summ))))
 
 (declaim (ftype (function ((array double-float)) double-float)
                 calc-on-double-float-adjustable-vector))
 (defun calc-on-double-float-adjustable-vector (vector)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for item double-float across vector
-        summing (* item item) into summ double-float
+  (loop for item of-type double-float across vector
+        summing (* item item) into summ of-type double-float
         finally (return (sqrt summ))))
 
 ;; Elt versions of list functions
@@ -86,18 +86,18 @@
                 calc-on-single-float-list-elt))
 (defun calc-on-single-float-list-elt (list)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for idx fixnum below (length list)
-        for item single-float = (elt list idx)
-        summing (* item item) into summ single-float
+  (loop for idx of-type fixnum below (length list)
+        for item of-type single-float = (elt list idx)
+        summing (* item item) into summ of-type single-float
         finally (return (sqrt summ))))
 
 (declaim (ftype (function (list) double-float)
                 calc-on-double-float-list-elt))
 (defun calc-on-double-float-list-elt (list)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for idx fixnum below (length list)
-        for item double-float = (elt list idx)
-        summing (* item item) into summ double-float
+  (loop for idx of-type fixnum below (length list)
+        for item of-type double-float = (elt list idx)
+        summing (* item item) into summ of-type double-float
         finally (return (sqrt summ))))
 
 
@@ -114,18 +114,18 @@
                 calc-on-single-float-vector-aref))
 (defun calc-on-single-float-vector-aref (vector)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for idx fixnum below (length vector)
-        for item single-float = (aref vector idx)
-        summing (* item item) into summ single-float
+  (loop for idx of-type fixnum below (length vector)
+        for item of-type single-float = (aref vector idx)
+        summing (* item item) into summ of-type single-float
         finally (return (sqrt summ))))
 
 (declaim (ftype (function ((simple-array double-float)) double-float)
                 calc-on-double-float-vector-aref))
 (defun calc-on-double-float-vector-aref (vector)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for idx fixnum below (length vector)
-        for item double-float = (aref vector idx)
-        summing (* item item) into summ double-float
+  (loop for idx of-type fixnum below (length vector)
+        for item of-type double-float = (aref vector idx)
+        summing (* item item) into summ of-type double-float
         finally (return (sqrt summ))))
 
 ;; Adjustable
@@ -134,18 +134,18 @@
                 calc-on-single-adjustable-float-vector-aref))
 (defun calc-on-single-float-adjustable-vector-aref (vector)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for idx fixnum below (length vector)
-        for item single-float = (aref vector idx)
-        summing (* item item) into summ single-float
+  (loop for idx of-type fixnum below (length vector)
+        for item of-type single-float = (aref vector idx)
+        summing (* item item) into summ of-type single-float
         finally (return (sqrt summ))))
 
 (declaim (ftype (function ((array double-float)) double-float)
                 calc-on-double-float-adjustable-vector-aref))
 (defun calc-on-double-float-adjustable-vector-aref (vector)
   (declare (optimize (speed 3) (debug 1)))
-  (loop for idx fixnum below (length vector)
-        for item double-float = (aref vector idx)
-        summing (* item item) into summ double-float
+  (loop for idx of-type fixnum below (length vector)
+        for item of-type double-float = (aref vector idx)
+        summing (* item item) into summ of-type double-float
         finally (return (sqrt summ))))
 
 
